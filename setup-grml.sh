@@ -10,8 +10,8 @@ sudo mkdir -p /boot/grml
  
 sudo tee /grml.sh > /dev/null << 'EOF'
 #!/bin/bash
-echo "Running..." >> /tmp/grml.log
-touch /sukses.sh
+#put yourscript here for executioon boot GRML and eanable myconfig=/dev/vda3 scripts=/grml.sh
+#dns=8.8.8.8,8.8.4.4 netscript=raw.githubusercontent.com/user../autorun-grml.sh
 EOF
 sudo chmod +x /grml.sh
 
