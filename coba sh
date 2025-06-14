@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo "[*] Mengecek folder /root..."
+
+# Cek apakah /root ada
+if [ ! -d /root ]; then
+    echo "[!] Folder /root TIDAK ADA. Akan dibuat..."
+    sudo mkdir -p /root
+else
+    echo "[+] Folder /root ADA."
+fi
+
+# Cek permission dan owner
+OWNER=$(stat -c '%U' /root)
+GROUP=$(stat -c '%G' /root)
+PERM=$(stat -c '%a' /root)
+
+# Perbaiki jika bukan root:root
+if [ "$OWNER" != "root" ] || [ "$GROUP" != "root" ]; then
+    echo "[!] Pemilik /root salah. Mengatur ulang ke root:root..."
+    sudo chown root:root /root
+else
+    echo "[+] Pemilik /root sudah benar."
+fi
+
+# Perbaiki permission jika bukan 700
+if [ "$PERM" != "700" ]; then
+    echo "[!] Permission /root salah ($PERM). Mengatur ulang ke 700..."
+    sudo chmod 700 /root
+else
+    echo "[+] Permission /root sudah benar (700)."
+fi
+
+echo "[✓] Pemeriksaan selesai."
