@@ -19,6 +19,6 @@ sudo mkdir -p /boot/grml
 sudo bash -c "echo 'CUSTOM_BOOTOPTIONS=\"ssh=pas123 dns=8.8.8.8,8.8.4.4 netscript=raw.githubusercontent.com/lamtota40/install-ulang/main/autorun-grml.sh toram\"' >> /etc/default/grml-rescueboot"
 sudo update-grub
 sudo grub-reboot 'Grml Rescue System (grml-small-2024.12-amd64.iso)'
-sudo read -p "tekan [ENTER] untuk reboot"
+sudo read -p "tekan [ENTER] untuk reboot" op
 sudo rm -rf setup-grml.sh
 sudo reboot
